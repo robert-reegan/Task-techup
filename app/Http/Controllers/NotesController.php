@@ -24,13 +24,13 @@ class NotesController extends Controller
         $path = "";
         if ($request->hasFile('attachment')) {
             $filenameWithExt = $request->file('attachment')->getClientOriginalName();
-            //Get just filename
+        
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
+        
             $extension = $request->file('attachment')->getClientOriginalExtension();
-            // Filename to store
+          
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            // Upload Image
+          
             $path = $request->file('attachment')->storeAs('public/files', $fileNameToStore);
         }
 
